@@ -3,31 +3,35 @@ const {getInputArray} = require('../utilities.js')
 // Day 2 - a
 getInputArray()
     .then(data => validPasswordCount(data, "original"))
-    .then(validity => console.log(validity))
+    .then(answer => {
+        if ( answer == 636) {
+            console.log("636! Winner!")
+        }else {
+            console.log(answer, "Oops")
+        }
+    })
     .catch(err => console.log(err))
 
     // Day 2 - a
 getInputArray()
-    // .then(data => validPasswordCount([data[0], data[1], data[2]], "new"))
     .then(data => validPasswordCount(data, "new"))
-    .then(validity => console.log(validity))
+    .then(answer => {
+        if (answer == 588) {
+            console.log("588! Winner!")
+        } else {
+            console.log(answer, "Oops")
+        }
+    })
+    .catch(err => console.log(err))
 
 
 // Functions
 
-function validPasswordCount(input, type) {
-
-    let validPasswordCount = 0;
-
-    input.forEach((item) => {
-        if (passwordIsValid(item, type)){
-            validPasswordCount++
-        }
-    })
-
-    return validPasswordCount;
-    
-}
+const validPasswordCount = (input, type) => (
+    input.reduce((total, current) => (
+        total + Number(passwordIsValid(current, type))
+    ), 0)
+)
 
 function passwordIsValid(item, type) {
 
@@ -35,7 +39,7 @@ function passwordIsValid(item, type) {
 
         const [rule, password] = item.split(": ");
         const [counts, letter] = rule.split(" ");
-        const [min,  max] = counts.split("-");
+        const [min, max] = counts.split("-");
     
         const letterCount = createCount(password);
     
@@ -51,11 +55,7 @@ function passwordIsValid(item, type) {
 
         const [rule, password] = item.split(": ");
         const [locations, letter] = rule.split(" ");
-        const [first,  second] = locations.split("-");
-
-        console.log({
-            rule, password, locations, first, second, letter
-        })
+        const [first, second] = locations.split("-");
 
         if (password[first - 1] == letter && password[second - 1] == letter) {
             return false;

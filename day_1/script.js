@@ -1,13 +1,27 @@
 const {getInputArray} = require('../utilities.js')
 
+
+// Part A
+getInputArray()
+    .then(data => findPair(data))
+    .then(years => years.reduce((prev, current) => prev * current))
+    .then(answer => console.log(answer))
+
+// Part B
+getInputArray()
+    .then(data => findThree(data))
+    .then(years => years.reduce((prev, current) => prev * current))
+    .then(answer => console.log(answer))
+
+const YEAR = 2020;
+
 function findPair(array){
 
-    const year = 2020;
     let pair;
 
     array.forEach((year1, _, data) => {
         data.forEach((year2) => {
-            if (Number(year1) + Number(year2) == year) {
+            if (Number(year1) + Number(year2) == YEAR) {
                 pair = [year1, year2]
             }
         })
@@ -16,16 +30,15 @@ function findPair(array){
     return pair;
 }
 
-function findThree(array){
+function findThree(data){
 
-    const year = 2020;
     let group;
 
-    array.forEach((year1, _, data) => {
-        data.forEach((year2, _, dataTwo) => {
-            data.forEach((year3) => {
-                if (Number(year1) + Number(year2) + Number(year3)== year) {
-                    group = [year1, year2,  year3]
+    data.forEach(year1 => {
+        data.forEach(year2 => {
+            data.forEach(year3 => {
+                if (Number(year1) + Number(year2) + Number(year3) == YEAR) {
+                    group = [year1, year2, year3]
                 }
             })
         })
@@ -33,30 +46,3 @@ function findThree(array){
 
     return group;
 }
-
-function findProductTwo(array){
-    if (array.length != 2) {
-        throw new Error("This is not hte right length o f array. Must be 2")
-    }
-    return array[0] *  array[1];
-}
-
-
-function findProductThree(array){
-    if ( array.length != 3) {
-        throw new Error("This is not hte right length o f array. Must be three")
-    }
-    return array[0] *  array[1] * array[2];
-}
-
-// Part A
-getInputArray()
-    .then(data => findPair(data))
-    .then(years => findProductTwo(years))
-    .then(product => console.log(product))
-
-    // Part A
-getInputArray()
-    .then(data => findThree(data))
-    .then(years => findProductThree(years))
-    .then(product => console.log(product))
