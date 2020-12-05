@@ -1,58 +1,78 @@
 const {getInputArray} = require('../utilities.js')
 
-const seatId = ([row, column]) => row * 8 + column;
+const seatId = (row, column) => row * 8 + column;
 
-const row = code => {
+const trackLocation = ({
+    locationCode,
+    size,
+    largerLetter,
+}) => {
 
-    const rowCode = code.slice(0,7);
+    let location = 1;
 
-    let size = 128;
-    let row = 1;
-
-    rowCode.split("").forEach(letter => {
-        if (letter == "B") {
-            row = row + (size/2);
+    locationCode.split("").forEach(letter => {
+        if (letter == largerLetter) {
+            location = location + (size/2);
         }
         size = size / 2;
     })
 
-    return row - 1;
+    return location - 1;
 
-};
-
-const column = code => {
-    const columnCode = code.slice(7);
-
-    let size = 8;
-    let seat = 1;
-
-    columnCode.split("").forEach(letter => {
-        if (letter == "R") {
-            seat = seat + (size/2);
-        }
-        size = size / 2;
-    })
-
-    return seat - 1;
 }
 
-const answer = async () => {
+const row = code => trackLocation({
+    locationCode: code.slice(0,7), 
+    size: 128, 
+    largerLetter: "B"
+});
 
+const column = code => trackLocation({
+    locationCode: code.slice(7), 
+    size: 8, 
+    largerLetter: "R"
+});
+
+
+const getListOfIdSorted =  async () => {
     const data = await getInputArray(`${__dirname}/`);
 
-    const [answer] = data.map(code => {
+    return data.map(code => {
         const columnValue = column(code);
         const rowValue = row(code);
-        return seatId([rowValue, columnValue]);
+        return seatId(rowValue, columnValue);
     }).sort((a,b)=> b-a);
+}
+
+const highestNumber = async () => {
+
+    const [answer] = await getListOfIdSorted();
 
     return answer;
 
 };
 
+const missing = async () => {
+
+    const listOfIdsArray = await getListOfIdSorted();
+    let mySeatId = 0;
+
+    listOfIdsArray.forEach(id => {
+        if (!listOfIdsArray.includes(id+1)) {
+            mySeatId = id + 1;
+        }
+    })
+
+    return mySeatId;
+  
+}
+
+missing();
+
 module.exports = {
-    answer,
+    highestNumber,
     seatId,
     column,
-    row
+    row,
+    missing
 };
