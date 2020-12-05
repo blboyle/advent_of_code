@@ -1,0 +1,26 @@
+{
+  "name": "advent_of_code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blboyle/advent_of_code2020.git"
+  },
+  "jest" :{
+    "rootDir": "./"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blboyle/advent_of_code2020/issues"
+  },
+  "homepage": "https://github.com/blboyle/advent_of_code2020#readme",
+  "dependencies": {
+    "jest": "^26.6.3",
+    "jest-cli": "^26.6.3"
+  }
+}
