@@ -20,7 +20,7 @@ const formatData = async (path = "") => {
     return groupInfo;
 }
 
-const countGroupAll = (groupInfo) => groupInfo.map(group => {
+const countGroupAll = groupInfo => groupInfo.map(group => {
 
     let letterArray = [];
 
@@ -39,7 +39,7 @@ const countGroupAll = (groupInfo) => groupInfo.map(group => {
 }).reduce((total, current) => total + current, 0);
 
 
-const countGroupSpecific = (groupInfo) => groupInfo.map(group => {
+const countGroupSpecific = groupInfo => groupInfo.map(group => {
 
     const groupLength = group.length;
     const letterObject = {};
@@ -54,11 +54,7 @@ const countGroupSpecific = (groupInfo) => groupInfo.map(group => {
         })
     })
 
-    const letters = Object.keys(letterObject).filter((letter) => {
-        return letterObject[letter] == groupLength;
-    })
-
-    return letters.length;
+    return Object.keys(letterObject).filter((letter) => letterObject[letter] == groupLength).length;
 
 }).reduce((total, current) => total + current, 0);
 
