@@ -39,7 +39,6 @@ function checkFieldValidity(passport) {
                 )
                 break;
             case "hcl":
-                // console.log(val);
                 const [beforeHex, hexCode] = val.split("#");
                 fieldValid = hexCode ? (hexCode && !beforeHex && (!!hexCode.match(/[a-f0-9]{6}/) != null)) : false;
                 break;
