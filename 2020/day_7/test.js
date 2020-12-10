@@ -20,6 +20,11 @@ describe('day7', () => {
         expect(answer).toBe(4);
        })
 
+       test("real -  avoid 113", async () => {
+        const answer = await howManyBags('shiny gold', '');
+        expect(answer).not.toBe(113);
+       })3
+
        test("real -  avoid 112", async () => {
         const answer = await howManyBags('shiny gold', '');
         expect(answer).not.toBe(112);
