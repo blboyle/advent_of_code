@@ -3,6 +3,9 @@ const {getInputArray} = require('../utilities.js')
 let listOfBagTypes;
 let listOfBags;
 
+// some of this came from https://github.com/juliapacula/advent-of-code
+// thank you julia
+
 const howManyBags = async (needle, path) => {
 
     const data = await getInputArray(`${__dirname}/${path}`);
