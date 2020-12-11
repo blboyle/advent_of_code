@@ -18,16 +18,22 @@ describe('day8', () => {
 
     })
 
-    describe.skip('part b', () => {
+    describe('part b', () => {
 
         test("example", async () => {
-            const answer = await v(`test`);
-            expect(answer[1]).toBe(8);
+            const answer = await findAnswer(`test`, 5);
+            expect(answer[1]).toBe(62);
         })
 
         test("real", async () => {
-            const answer = await v(``);
-            expect(answer[1]).toBe(1245);
+            const answer = await findAnswer(``, 25);
+            expect(answer[1]).toBe(200682420);
+        })
+
+
+        test("real avoid 200682420", async () => {
+            const answer = await findAnswer(``, 25);
+            expect(answer[1]).not.toBe(200682420);
         })
 
     });
