@@ -14,9 +14,18 @@ const findAnswer = async (path, preambleSize) => {
 
 const findEncryptionWeakness = (data, answer) => {
     const list = findContiguousList(data, answer);
-    const sorted = list.sort();
+    console.log({list});
+    const sorted = list.sort((a,b) => {
+        if(a>b){
+            return -1
+        } else {
+            return 1;
+        }
+    });
 
-    console.log(sorted);
+    console.log({sorted});
+
+    console.log([parseInt(sorted[0]), parseInt(sorted[sorted.length - 1])])
 
     return parseInt(sorted[0]) + parseInt(sorted[sorted.length - 1]);
 }
@@ -30,32 +39,35 @@ const findContiguousList = (data, answer) => {
 
     while(pointer < data.length && !reached) {
 
+        // console.log("----")
+
         let count = Number(data[pointer]);
         let subPointer = pointer;
-        let list = [];
+        let list = [Number(data[pointer])];
 
         while (count <= answer) {
 
+            subPointer++
+
+            list.push(Number(data[subPointer]))
+            count = count + Number(data[subPointer]);
+
+        
             if (count == answer) {
-                // console.log('hi')
-                reached = true;
-                break;
+                console.log( {list: list.reduce((a,b) => a + b,0)})
+                console.log({count, answer})
+                return list;
             }
 
-            // console.log({count, answer});
-            list.push(Number(data[subPointer]))
-            count = count + Number(data[++subPointer]);
+           
 
-        }
-
-        if (reached) {
-            return list;
         }
 
         pointer++
     }
 
 }
+
 
 const findFirstOutlier = (data, preambleSize) => {
 

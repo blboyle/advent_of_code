@@ -27,7 +27,7 @@ describe('day8', () => {
 
         test("real", async () => {
             const answer = await findAnswer(``, 25);
-            expect(answer[1]).toBe(200682420);
+            expect(answer[1]).toBe(268878261);
         })
 
 
