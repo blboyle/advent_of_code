@@ -21,7 +21,7 @@ describe('day8', () => {
 
     })
 
-    describe.skip('part b', () => {
+    describe('part b', () => {
 
         test("example", async () => {
             const answer = await findAnswer(`test`);
@@ -35,7 +35,7 @@ describe('day8', () => {
 
         test("real", async () => {
             const answer = await findAnswer(``);
-            expect(answer[1]).toBe(19208);
+            expect(answer[1]).toBe(56693912375296);
         })
 
         test("real no 140737488355328", async () => {
