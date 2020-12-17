@@ -17,7 +17,7 @@ const findAnswer = async (path) => {
 
     const pretty = prettyMap(map);
 
-    console.log(pretty);
+    // console.log(pretty);
 
     return [answer];
 
@@ -36,7 +36,7 @@ const countChanges = () => {
         })
     })
 
-    console.log(count);
+    // console.log(count);
     return count;
 
 }
@@ -59,7 +59,7 @@ const loopSeatings = () => {
     let differences = 1;
 
     while (differences) {
-        console.log("---")
+        // console.log("---")
         tempMap = [];
         setSeating();
 
@@ -68,7 +68,7 @@ const loopSeatings = () => {
 
         const pretty = prettyMap(map);
 
-        console.log(pretty);
+        // console.log(pretty);
 
     }
 

@@ -2,17 +2,16 @@ const {findAnswer} = require('./script');
 
 describe('day8', () => {
 
-    describe('part a',  () => {
+    describe.only('part a',  () => {
 
-        test.only("example", async () => {
+        test("example", async () => {
             const answer = await findAnswer(`test`);
-            expect(answer[0]).toBe(7 * 5);``
+            expect(answer[0]).toBe(25);
         })
-
 
         test("real", async () => {
             const answer = await findAnswer(``);
-            expect(answer[0]).toBe(1656);
+            expect(answer[0]).toBe(230);
         })
 
         
