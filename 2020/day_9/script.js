@@ -14,7 +14,7 @@ const findAnswer = async (path, preambleSize) => {
 
 const findEncryptionWeakness = (data, answer) => {
     const list = findContiguousList(data, answer);
-    console.log({list});
+    // console.log({list});
     const sorted = list.sort((a,b) => {
         if(a>b){
             return -1
@@ -23,9 +23,9 @@ const findEncryptionWeakness = (data, answer) => {
         }
     });
 
-    console.log({sorted});
+    // console.log({sorted});
 
-    console.log([parseInt(sorted[0]), parseInt(sorted[sorted.length - 1])])
+    // console.log([parseInt(sorted[0]), parseInt(sorted[sorted.length - 1])])
 
     return parseInt(sorted[0]) + parseInt(sorted[sorted.length - 1]);
 }
@@ -54,8 +54,8 @@ const findContiguousList = (data, answer) => {
 
         
             if (count == answer) {
-                console.log( {list: list.reduce((a,b) => a + b,0)})
-                console.log({count, answer})
+                // console.log( {list: list.reduce((a,b) => a + b,0)})
+                // console.log({count, answer})
                 return list;
             }
 
@@ -98,12 +98,12 @@ const findFirstOutlier = (data, preambleSize) => {
     return Number(outlierNumber);
 }
 
-const run = async () => {
-    const answer = await findAnswer(``, 25);
-    console.log(answer);
-}
+// const run = async () => {
+//     const answer = await findAnswer(``, 25);
+//     // console.log(answer);
+// }
 
-run();
+// run();
 
 module.exports = {
     findAnswer

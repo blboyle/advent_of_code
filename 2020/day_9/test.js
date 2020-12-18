@@ -1,6 +1,6 @@
 const {findAnswer} = require('./script');
 
-describe('day8', () => {
+describe('day9', () => {
 
     describe('part a',  () => {
 
