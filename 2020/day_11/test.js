@@ -1,35 +1,34 @@
 const {findAnswer} = require('./script');
 
-describe('day8', () => {
+describe('day11', () => {
 
     describe('part a',  () => {
 
-        test.only("example", async () => {
+        test("example", async () => {
             const answer = await findAnswer(`test`);
-            expect(answer[0]).toBe(7 * 5);``
+            expect(answer[0]).toBe(37);
         })
 
 
         test("real", async () => {
             const answer = await findAnswer(``);
-            expect(answer[0]).toBe(1656);
+            expect(answer[0]).toBe(2424);
         })
 
-        
 
     })
 
     describe('part b', () => {
 
         test("example", async () => {
-            const answer = await findAnswer(`test`);
-            expect(answer[1]).toBe(8);
+            const answer = await findAnswer(`test`, 2);
+            expect(answer[0]).toBe(26);
         })
 
 
         test("real", async () => {
-            const answer = await findAnswer(``);
-            expect(answer[1]).toBe(56693912375296);
+            const answer = await findAnswer(``, 2);
+            expect(answer[0]).toBe(2208);
         })
 
     });
